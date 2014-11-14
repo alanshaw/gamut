@@ -70,3 +70,15 @@ test('create a stepped range from two ints', function (t) {
   })
   t.end()
 })
+
+test('create a stepped range from range string', function (t) {
+  t.plan(3)
+  var i = 0
+  gamut('0..5', 2, function (i) {
+    return i
+  }).forEach(function (item) {
+    t.equal(item, i, 'item ' + i + ' should equal ' + i)
+    i += 2
+  })
+  t.end()
+})

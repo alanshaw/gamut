@@ -22,11 +22,16 @@ gamut(1, 5, function (i) {
   return {n: i}
 }) // [{n: 1}, {n: 2}, {n: 3}, {n: 4}]
 
+gamut('0..5', function (i) {
+    return 1
+}) // [1, 1, 1, 1, 1]
+
+// With step 2
 gamut(1, 5, 2, function (i) {
   return {n: i}
 }) // [{n: 1}, {n: 3}]
 
-gamut('0..5', function (i) {
+gamut('0..5', 2, function (i) {
     return 1
-}) // [1, 1, 1, 1, 1]
+}) // [1, 1, 1]
 ```
