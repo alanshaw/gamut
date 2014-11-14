@@ -51,9 +51,8 @@ module.exports = function gamut () {
       var rangeArr = parseRangeString(args[0])
       return createRange(rangeArr[0], rangeArr[1], 1, passThru)
     }
-  }
 
-  if (args.length == 2) {
+  } else if (args.length == 2) {
 
     if (isNumber(args[0]) && isNumber(args[1])) {
       return createRange(args[0], args[1], 1, passThru)
@@ -66,6 +65,12 @@ module.exports = function gamut () {
     if (isString(args[0]) && isFunction(args[1])) {
       var rangeArr = parseRangeString(args[0])
       return createRange(rangeArr[0], rangeArr[1], 1, args[1])
+    }
+
+  } else if (args.length == 3) {
+
+    if (isNumber(args[0]) && isNumber(args[1]) && isNumber(args[2])) {
+      return createRange(args[0], args[1], args[2], passThru)
     }
   }
 

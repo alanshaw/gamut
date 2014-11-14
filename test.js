@@ -62,9 +62,9 @@ test('create a range from range string and callback', function (t) {
 // 3 args
 
 test('create a stepped range from two ints', function (t) {
-  t.plan(5)
+  t.plan(3)
   var i = 0
-  gamut(0, 5, 2).forEach(function (item, i) {
+  gamut(0, 5, 2).forEach(function (item) {
     t.equal(item, i, 'item ' + i + ' should equal ' + i)
     i += 2
   })
