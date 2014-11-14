@@ -77,6 +77,12 @@ module.exports = function gamut () {
       var rangeArr = parseRangeString(args[0])
       return createRange(rangeArr[0], rangeArr[1], args[1], args[2])
     }
+
+  } else if (args.length == 4) {
+
+    if (isNumber(args[0]) && isNumber(args[1]) && isNumber(args[2]) && isFunction(args[3])) {
+      return createRange(args[0], args[1], args[2], args[3])
+    }
   }
 
   throw new Error('Invalid arguments')
