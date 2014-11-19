@@ -19,6 +19,14 @@ test('create a range from range string', function (t) {
   t.end()
 })
 
+test('throw on invalid range string', function (t) {
+  t.plan(1)
+  t.throws(function () {
+    gamut('blah')
+  })
+  t.end()
+})
+
 // 2 args
 
 test('create a range from two ints', function (t) {
