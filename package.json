@@ -4,7 +4,9 @@
   "description": "Create a new array of values in a range.",
   "main": "gamut.js",
   "scripts": {
-    "test": "tape test.js"
+    "test": "tape test.js",
+    "coverage": "istanbul cover node_modules/.bin/tape test.js",
+    "coveralls": "istanbul cover node_modules/.bin/tape test.js && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "range",
@@ -19,6 +21,8 @@
     "polymorf": "^1.1.0"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.2",
     "tape": "^3.0.3"
   }
 }
