@@ -1,3 +1,5 @@
+var polymorf = require('polymorf')
+
 function createRange (start, end, step, callback) {
   var arr = []
 
@@ -14,18 +16,6 @@ function createRange (start, end, step, callback) {
   return arr
 }
 
-function isNumber (val) {
-  return Object.prototype.toString.call(val) == '[object Number]' && !isNaN(val)
-}
-
-function isString (str) {
-  return Object.prototype.toString.call(str) == '[object String]'
-}
-
-function isFunction (fn) {
-  return typeof fn == 'function'
-}
-
 var rangeRegex = /^([0-9]+)\.\.([0-9]+)$/
 
 function parseRangeString (str) {
@@ -38,52 +28,40 @@ function passThru (i) {
   return i
 }
 
-module.exports = function gamut () {
-  var args = arguments
-
-  if (args.length == 1) {
-
-    if (isNumber(args[0])) {
-      return createRange(0, args[0], 1, passThru)
-    }
-
-    if (isString(args[0])) {
-      var rangeArr = parseRangeString(args[0])
-      return createRange(rangeArr[0], rangeArr[1], 1, passThru)
-    }
-
-  } else if (args.length == 2) {
-
-    if (isNumber(args[0]) && isNumber(args[1])) {
-      return createRange(args[0], args[1], 1, passThru)
-    }
-
-    if (isNumber(args[0]) && isFunction(args[1])) {
-      return createRange(0, args[0], 1, args[1])
-    }
-
-    if (isString(args[0]) && isFunction(args[1])) {
-      var rangeArr = parseRangeString(args[0])
-      return createRange(rangeArr[0], rangeArr[1], 1, args[1])
-    }
-
-  } else if (args.length == 3) {
-
-    if (isNumber(args[0]) && isNumber(args[1]) && isNumber(args[2])) {
-      return createRange(args[0], args[1], args[2], passThru)
-    }
-
-    if (isString(args[0]) && isNumber(args[1]) && isFunction(args[2])) {
-      var rangeArr = parseRangeString(args[0])
-      return createRange(rangeArr[0], rangeArr[1], args[1], args[2])
-    }
-
-  } else if (args.length == 4) {
-
-    if (isNumber(args[0]) && isNumber(args[1]) && isNumber(args[2]) && isFunction(args[3])) {
-      return createRange(args[0], args[1], args[2], args[3])
-    }
+module.exports = polymorf(
+  [Number],
+  function (end) {
+    return createRange(0, end, 1, passThru)
+  },
+  [String],
+  function (range) {
+    var rangeArr = parseRangeString(range)
+    return createRange(rangeArr[0], rangeArr[1], 1, passThru)
+  },
+  [Number, Number],
+  function (start, end) {
+    return createRange(start, end, 1, passThru)
+  },
+  [Number, Function],
+  function (end, callback) {
+    return createRange(0, end, 1, callback)
+  },
+  [String, Function],
+  function (range, callback) {
+    var rangeArr = parseRangeString(range)
+    return createRange(rangeArr[0], rangeArr[1], 1, callback)
+  },
+  [Number, Number, Number],
+  function (start, end, step) {
+    return createRange(start, end, step, passThru)
+  },
+  [String, Number, Function],
+  function (range, step, callback) {
+    var rangeArr = parseRangeString(range)
+    return createRange(rangeArr[0], rangeArr[1], step, callback)
+  },
+  [Number, Number, Number, Function],
+  function (start, end, step, callback) {
+    return createRange(start, end, step, callback)
   }
-
-  throw new Error('Invalid arguments')
-}
+)

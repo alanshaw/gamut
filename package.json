@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Create a new array of values in a range.",
   "main": "gamut.js",
-  "devDependencies": {
-    "tape": "^3.0.3"
-  },
   "scripts": {
     "test": "tape test.js"
   },
@@ -17,5 +14,11 @@
     "create"
   ],
   "author": "Alan Shaw",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "polymorf": "^1.1.0"
+  },
+  "devDependencies": {
+    "tape": "^3.0.3"
+  }
 }
