@@ -1,4 +1,4 @@
-# gamut [![Build Status](https://img.shields.io/travis/alanshaw/gamut.svg?style=flat)](https://travis-ci.org/alanshaw/gamut) [![Dependency Status](https://david-dm.org/alanshaw/gamut.svg?style=flat)](https://david-dm.org/alanshaw/gamut)
+# gamut [![Build Status](https://img.shields.io/travis/alanshaw/gamut.svg?style=flat)](https://travis-ci.org/alanshaw/gamut) [![Dependency Status](https://david-dm.org/alanshaw/gamut.svg?style=flat)](https://david-dm.org/alanshaw/gamut) [![Coverage Status](https://img.shields.io/coveralls/alanshaw/gamut.svg?style=flat)](https://coveralls.io/r/alanshaw/gamut)
 Create a new array of values in a range.
 
 ## Usage
