@@ -1,6 +1,6 @@
 {
   "name": "gamut",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create a new array of values in a range.",
   "main": "gamut.js",
   "scripts": {
