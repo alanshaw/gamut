@@ -91,6 +91,16 @@ test('create a stepped range from range string and callback', function (t) {
   t.end()
 })
 
+test('create a range from two ints and callback', function (t) {
+  t.plan(5)
+  gamut(0, 5, function () {
+    return 1
+  }).forEach(function (item, i) {
+    t.equal(item, 1, 'item ' + i + ' should equal 1')
+  })
+  t.end()
+})
+
 // 4 args
 
 test('create a stepped range from two ints and callback', function (t) {

@@ -60,6 +60,10 @@ module.exports = polymorf(
     var rangeArr = parseRangeString(range)
     return createRange(rangeArr[0], rangeArr[1], step, callback)
   },
+  [Number, Number, Function],
+  function (start, end, callback) {
+    return createRange(start, end, 1, callback)
+  },
   [Number, Number, Number, Function],
   function (start, end, step, callback) {
     return createRange(start, end, step, callback)
